@@ -1,0 +1,18 @@
+/* É preciso criar um banco e passar as  credenciais no appsettings.json */
+
+CREATE TABLE Empresas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    CNPJ NVARCHAR(20) NOT NULL,
+    Nome NVARCHAR(100) NOT NULL,
+    FaturamentoMensal DECIMAL(18,2) NOT NULL,
+    Ramo INT NOT NULL
+);
+
+CREATE TABLE NotasFiscais (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Numero INT NOT NULL,
+    Valor DECIMAL(18,2) NOT NULL,
+    DataVencimento DATE NOT NULL,
+    EmpresaId INT NOT NULL,
+    FOREIGN KEY (EmpresaId) REFERENCES Empresas(Id)
+);
